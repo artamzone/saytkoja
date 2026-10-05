@@ -44,6 +44,14 @@ p { line-height: 1.75; }
 .hero-note { display: none; }
 .hero-photo { position: relative; overflow: hidden; height: 300px; background: #EDE4D8; }
 .hero-photo > img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+@keyframes hero-photo-breathe {
+ from { transform: scale(1); }
+ to { transform: scale(1.14); }
+}
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+ .hero-photo > img { transform-origin: center 35%; animation: hero-photo-breathe 8s ease-in-out infinite alternate; }
+ .hero-photo:focus-within > img { animation-play-state: paused; }
+}
 .photo-label { position: absolute; bottom: 16px; left: 16px; right: 16px; display: flex; align-items: center; justify-content: space-between; color: white; text-shadow: 0 1px 5px #171411; font-size: 12px; }
 .photo-label a { width: 34px; height: 34px; border: 1px solid #fff9; border-radius: 50%; display: grid; place-items: center; }
 .benefits { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 22px; border-bottom: 1px solid #D7CEC2; }
