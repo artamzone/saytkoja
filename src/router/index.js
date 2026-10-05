@@ -1,14 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { brandName, siteConfig } from '../data/siteConfig'
-import { products } from '../data/products'
+import { brandName, siteConfig } from '../data/site'
+import { content } from '../data/content'
+import { visibleProducts as products } from '../data/products'
 const router = createRouter({
  history: createWebHistory(),
  routes: [
-  { path: '/', name: 'home', component: () => import('../views/HomeView.vue'), meta: { title: 'Сумки ручной работы' } },
-  { path: '/catalog', name: 'catalog', component: () => import('../views/CatalogView.vue'), meta: { title: 'Каталог изделий' } },
+  { path: '/', name: 'home', component: () => import('../views/HomeView.vue'), meta: { title: siteConfig.seo.title } },
+  { path: '/catalog', name: 'catalog', component: () => import('../views/CatalogView.vue'), meta: { title: content.seo.catalog } },
   { path: '/catalog/:slug', name: 'product', component: () => import('../views/ProductView.vue') },
-  ...[['about','О мастерской','About'],['delivery','Доставка и заказ','Delivery'],['contacts','Контакты','Contacts'],['privacy','Конфиденциальность','Privacy']].map(([path,title,view]) => ({ path: '/' + path, name: path, component: { About: () => import('../views/AboutView.vue'), Delivery: () => import('../views/DeliveryView.vue'), Contacts: () => import('../views/ContactsView.vue'), Privacy: () => import('../views/PrivacyView.vue') }[view], meta: { title } })),
-  { path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('../views/NotFoundView.vue'), meta: { title: 'Страница не найдена' } },
+  ...[['about',content.seo.about,'About'],['delivery',content.seo.delivery,'Delivery'],['contacts',content.seo.contacts,'Contacts'],['privacy',content.seo.privacy,'Privacy']].map(([path,title,view]) => ({ path: '/' + path, name: path, component: { About: () => import('../views/AboutView.vue'), Delivery: () => import('../views/DeliveryView.vue'), Contacts: () => import('../views/ContactsView.vue'), Privacy: () => import('../views/PrivacyView.vue') }[view], meta: { title } })),
+  { path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('../views/NotFoundView.vue'), meta: { title: content.seo.notFound } },
  ],
  scrollBehavior(to, from, saved) {
   if (saved) return saved
@@ -19,12 +20,12 @@ const router = createRouter({
 })
 router.afterEach(to => {
  const product = to.name === 'product' ? products.find(p => p.slug === to.params.slug) : null
- const title = (product?.title || to.meta.title || 'Изделие не найдено') + ' — ' + brandName
- const description = product?.shortDescription || 'Сумки ручной работы из натуральной кожи. Познакомьтесь с коллекцией и обсудите своё изделие с мастером.'
+ const title = (product?.title || to.meta.title || content.seo.productNotFound) + ' — ' + brandName
+ const description = product?.shortDescription || siteConfig.seo.description
  document.title = title
  document.querySelector('meta[name="description"]').content = description
  document.querySelector('meta[property="og:title"]').content = title
  document.querySelector('meta[property="og:description"]').content = description
- document.querySelector('meta[property="og:image"]').content = siteConfig.siteUrl + (product?.images[0] || '/images/photo_2026-10-05_22-13-02.jpg')
+ document.querySelector('meta[property="og:image"]').content = siteConfig.siteUrl + (product?.images[0] || siteConfig.seo.image)
 })
 export default router

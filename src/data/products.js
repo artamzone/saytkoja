@@ -1,18 +1,251 @@
-export const photo = (time) => `/images/photo_2026-10-05_${time}.jpg`
-export const categories = [
-  { id: 'classic', title: 'Классические сумки', caption: 'Вне времени и трендов', image: photo('22-12-46 (2)') },
-  { id: 'shoulder', title: 'Сумки на плечо', caption: 'В ритме вашего дня', image: photo('22-12-54') },
-  { id: 'bright', title: 'Яркие акценты', caption: 'Цвет, который чувствуется', image: photo('22-12-57') },
-  { id: 'details', title: 'Детали', caption: 'Маленькие важные вещи', image: photo('22-12-55 (2)') },
-]
-const common = { price: 'Цена по запросу', material: 'Натуральная кожа', dimensions: 'Уточните у мастера', availability: 'Наличие и срок изготовления уточняются индивидуально.' }
+// Скопируйте объект изделия для добавления нового. id и slug должны быть уникальными.
+// tags — дополнительные категории; cardColor — цвет точки (red, blue или пусто).
 export const products = [
-  { ...common, id: 1, slug: 'red-classic', title: 'Красная классика', category: 'classic', tags: ['bright', 'shoulder'], shortDescription: 'Чёткий силуэт и выразительный акцент', description: 'Лаконичная сумка с клапаном и фурнитурой золотистого оттенка. Для дней, в которых хочется добавить цвета.', colors: ['Красный'], details: ['Съёмный ремень на карабинах', 'Поворотный замок', 'Аккуратная отделка краёв'], images: ['22-12-57','22-12-58','22-12-59','22-13-00','22-13-01','22-12-46','22-12-40'].map(photo) },
-  { ...common, id: 2, slug: 'blue-shoulder', title: 'Небесная', category: 'shoulder', tags: ['bright'], shortDescription: 'Мягкая форма в нежном голубом оттенке', description: 'Небольшая сумка на плечо с мягким силуэтом. Лёгкий цвет и минимум деталей — для ваших повседневных образов.', colors: ['Голубой', 'Молочный — уточнить наличие'], details: ['Регулируемый ремень', 'Застёжка на молнии', 'Мягкая конструкция'], images: ['22-12-54','22-12-53','22-12-55'].map(photo) },
-  { ...common, id: 3, slug: 'black-tote', title: 'Большая чёрная', category: 'classic', tags: ['shoulder'], shortDescription: 'Вместительная спутница на каждый день', description: 'Большая сумка из чёрной кожи с мягкой линией верха. Сдержанная форма, которая легко становится частью вашего гардероба.', colors: ['Чёрный'], details: ['Внутренний карман на молнии', 'Магнитная застёжка', 'Съёмный плечевой ремень'], images: ['22-13-02','22-13-03','22-13-04','22-13-01 (2)'].map(photo) },
-  { ...common, id: 4, slug: 'black-geometry', title: 'Геометрия', category: 'classic', tags: ['shoulder'], shortDescription: 'Чистые линии и широкий ремень', description: 'Структурный силуэт и широкая ручка. Спокойная классика с вниманием к пропорциям.', colors: ['Чёрный'], details: ['Широкий регулируемый ремень', 'Внутренний карман на молнии'], images: ['22-12-46 (2)','22-12-48','22-12-47'].map(photo) },
-  { ...common, material: 'Натуральная замша', id: 5, slug: 'suede-hobo', title: 'Тёплая замша', category: 'shoulder', tags: [], shortDescription: 'Мягкая фактура в карамельном цвете', description: 'Расслабленная сумка с широкой ручкой. Тёплая фактура замши для неспешных прогулок и повседневных историй.', colors: ['Карамельный'], details: ['Внутренний карман на молнии', 'Магнитная застёжка'], images: ['22-12-52','22-12-49','22-12-50','22-12-51'].map(photo) },
-  { ...common, id: 6, slug: 'small-essentials', title: 'Самое важное', category: 'details', tags: ['bright'], shortDescription: 'Компактный аксессуар на тонком ремешке', description: 'Небольшой кожаный аксессуар для самого необходимого. Можно обсудить с мастером комплект в одном цвете.', colors: ['Красный', 'Чёрный'], details: ['Тонкий ремешок', 'Клапан с застёжкой'], images: ['22-12-55 (2)','22-12-56','22-12-45'].map(photo) },
-  { ...common, id: 7, slug: 'red-glasses-case', title: 'Красный футляр', category: 'details', tags: ['bright'], shortDescription: 'Кожаный футляр для очков', description: 'Футляр с ремешком и застёжкой на кнопку. Подходящий размер для ваших очков уточните у мастера.', colors: ['Красный'], details: ['Застёжка на кнопку', 'Кожаный ремешок'], images: ['22-12-44','22-12-40'].map(photo) },
-  { ...common, id: 8, slug: 'brown-sling', title: 'Городской', category: 'shoulder', tags: [], shortDescription: 'Коричневая кожа с живой фактурой', description: 'Компактная сумка через плечо с внешним карманом. Естественная фактура кожи делает каждое изделие особенным.', colors: ['Коричневый'], details: ['Внешний карман на молнии', 'Основное отделение на молнии'], images: ['22-12-43'].map(photo) },
+  {
+    "id": 1,
+    "slug": "red-classic",
+    "title": "Красная классика",
+    "category": "classic",
+    "tags": [
+      "bright",
+      "shoulder"
+    ],
+    "price": "Цена по запросу",
+    "shortDescription": "Чёткий силуэт и выразительный акцент",
+    "description": "Лаконичная сумка с клапаном и фурнитурой золотистого оттенка. Для дней, в которых хочется добавить цвета.",
+    "material": "Натуральная кожа",
+    "size": "Уточните у мастера",
+    "colors": [
+      "Красный"
+    ],
+    "images": [
+      "/images/products/photo_2026-10-05_22-12-57.jpg",
+      "/images/products/photo_2026-10-05_22-12-58.jpg",
+      "/images/products/photo_2026-10-05_22-12-59.jpg",
+      "/images/details/photo_2026-10-05_22-13-00.jpg",
+      "/images/details/photo_2026-10-05_22-13-01.jpg",
+      "/images/products/photo_2026-10-05_22-12-46.jpg",
+      "/images/products/photo_2026-10-05_22-12-40.jpg"
+    ],
+    "details": [
+      "Съёмный ремень на карабинах",
+      "Поворотный замок",
+      "Аккуратная отделка краёв"
+    ],
+    "availability": "Наличие и срок изготовления уточняются индивидуально.",
+    "cardColor": "red",
+    "featured": true,
+    "visible": true
+  },
+  {
+    "id": 2,
+    "slug": "blue-shoulder",
+    "title": "Небесная",
+    "category": "shoulder",
+    "tags": [
+      "bright"
+    ],
+    "price": "Цена по запросу",
+    "shortDescription": "Мягкая форма в нежном голубом оттенке",
+    "description": "Небольшая сумка на плечо с мягким силуэтом. Лёгкий цвет и минимум деталей — для ваших повседневных образов.",
+    "material": "Натуральная кожа",
+    "size": "Уточните у мастера",
+    "colors": [
+      "Голубой",
+      "Молочный — уточнить наличие"
+    ],
+    "images": [
+      "/images/products/photo_2026-10-05_22-12-54.jpg",
+      "/images/products/photo_2026-10-05_22-12-53.jpg",
+      "/images/details/photo_2026-10-05_22-12-55.jpg"
+    ],
+    "details": [
+      "Регулируемый ремень",
+      "Застёжка на молнии",
+      "Мягкая конструкция"
+    ],
+    "availability": "Наличие и срок изготовления уточняются индивидуально.",
+    "cardColor": "blue",
+    "featured": true,
+    "visible": true
+  },
+  {
+    "id": 3,
+    "slug": "black-tote",
+    "title": "Большая чёрная",
+    "category": "classic",
+    "tags": [
+      "shoulder"
+    ],
+    "price": "Цена по запросу",
+    "shortDescription": "Вместительная спутница на каждый день",
+    "description": "Большая сумка из чёрной кожи с мягкой линией верха. Сдержанная форма, которая легко становится частью вашего гардероба.",
+    "material": "Натуральная кожа",
+    "size": "Уточните у мастера",
+    "colors": [
+      "Чёрный"
+    ],
+    "images": [
+      "/images/products/photo_2026-10-05_22-13-02.jpg",
+      "/images/products/photo_2026-10-05_22-13-03.jpg",
+      "/images/details/photo_2026-10-05_22-13-04.jpg",
+      "/images/hero/photo_2026-10-05_22-13-01 (2).jpg"
+    ],
+    "details": [
+      "Внутренний карман на молнии",
+      "Магнитная застёжка",
+      "Съёмный плечевой ремень"
+    ],
+    "availability": "Наличие и срок изготовления уточняются индивидуально.",
+    "cardColor": "",
+    "featured": true,
+    "visible": true
+  },
+  {
+    "id": 4,
+    "slug": "black-geometry",
+    "title": "Геометрия",
+    "category": "classic",
+    "tags": [
+      "shoulder"
+    ],
+    "price": "Цена по запросу",
+    "shortDescription": "Чистые линии и широкий ремень",
+    "description": "Структурный силуэт и широкая ручка. Спокойная классика с вниманием к пропорциям.",
+    "material": "Натуральная кожа",
+    "size": "Уточните у мастера",
+    "colors": [
+      "Чёрный"
+    ],
+    "images": [
+      "/images/products/photo_2026-10-05_22-12-46 (2).jpg",
+      "/images/products/photo_2026-10-05_22-12-48.jpg",
+      "/images/products/photo_2026-10-05_22-12-47.jpg"
+    ],
+    "details": [
+      "Широкий регулируемый ремень",
+      "Внутренний карман на молнии"
+    ],
+    "availability": "Наличие и срок изготовления уточняются индивидуально.",
+    "cardColor": "",
+    "featured": false,
+    "visible": true
+  },
+  {
+    "id": 5,
+    "slug": "suede-hobo",
+    "title": "Тёплая замша",
+    "category": "shoulder",
+    "tags": [],
+    "price": "Цена по запросу",
+    "shortDescription": "Мягкая фактура в карамельном цвете",
+    "description": "Расслабленная сумка с широкой ручкой. Тёплая фактура замши для неспешных прогулок и повседневных историй.",
+    "material": "Натуральная замша",
+    "size": "Уточните у мастера",
+    "colors": [
+      "Карамельный"
+    ],
+    "images": [
+      "/images/lifestyle/photo_2026-10-05_22-12-52.jpg",
+      "/images/products/photo_2026-10-05_22-12-49.jpg",
+      "/images/products/photo_2026-10-05_22-12-50.jpg",
+      "/images/products/photo_2026-10-05_22-12-51.jpg"
+    ],
+    "details": [
+      "Внутренний карман на молнии",
+      "Магнитная застёжка"
+    ],
+    "availability": "Наличие и срок изготовления уточняются индивидуально.",
+    "cardColor": "",
+    "featured": false,
+    "visible": true
+  },
+  {
+    "id": 6,
+    "slug": "small-essentials",
+    "title": "Самое важное",
+    "category": "details",
+    "tags": [
+      "bright"
+    ],
+    "price": "Цена по запросу",
+    "shortDescription": "Компактный аксессуар на тонком ремешке",
+    "description": "Небольшой кожаный аксессуар для самого необходимого. Можно обсудить с мастером комплект в одном цвете.",
+    "material": "Натуральная кожа",
+    "size": "Уточните у мастера",
+    "colors": [
+      "Красный",
+      "Чёрный"
+    ],
+    "images": [
+      "/images/products/photo_2026-10-05_22-12-55 (2).jpg",
+      "/images/products/photo_2026-10-05_22-12-56.jpg",
+      "/images/products/photo_2026-10-05_22-12-45.jpg"
+    ],
+    "details": [
+      "Тонкий ремешок",
+      "Клапан с застёжкой"
+    ],
+    "availability": "Наличие и срок изготовления уточняются индивидуально.",
+    "cardColor": "red",
+    "featured": false,
+    "visible": true
+  },
+  {
+    "id": 7,
+    "slug": "red-glasses-case",
+    "title": "Красный футляр",
+    "category": "details",
+    "tags": [
+      "bright"
+    ],
+    "price": "Цена по запросу",
+    "shortDescription": "Кожаный футляр для очков",
+    "description": "Футляр с ремешком и застёжкой на кнопку. Подходящий размер для ваших очков уточните у мастера.",
+    "material": "Натуральная кожа",
+    "size": "Уточните у мастера",
+    "colors": [
+      "Красный"
+    ],
+    "images": [
+      "/images/products/photo_2026-10-05_22-12-44.jpg",
+      "/images/products/photo_2026-10-05_22-12-40.jpg"
+    ],
+    "details": [
+      "Застёжка на кнопку",
+      "Кожаный ремешок"
+    ],
+    "availability": "Наличие и срок изготовления уточняются индивидуально.",
+    "cardColor": "red",
+    "featured": false,
+    "visible": true
+  },
+  {
+    "id": 8,
+    "slug": "brown-sling",
+    "title": "Городской",
+    "category": "shoulder",
+    "tags": [],
+    "price": "Цена по запросу",
+    "shortDescription": "Коричневая кожа с живой фактурой",
+    "description": "Компактная сумка через плечо с внешним карманом. Естественная фактура кожи делает каждое изделие особенным.",
+    "material": "Натуральная кожа",
+    "size": "Уточните у мастера",
+    "colors": [
+      "Коричневый"
+    ],
+    "images": [
+      "/images/products/photo_2026-10-05_22-12-43.jpg"
+    ],
+    "details": [
+      "Внешний карман на молнии",
+      "Основное отделение на молнии"
+    ],
+    "availability": "Наличие и срок изготовления уточняются индивидуально.",
+    "cardColor": "",
+    "featured": false,
+    "visible": true
+  }
 ]
+
+export const visibleProducts = products.filter(product => product.visible !== false)
