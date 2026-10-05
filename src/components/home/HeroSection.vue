@@ -1,0 +1,6 @@
+<script setup>
+import { ArrowDown, Sparkles, Leaf, MapPin } from 'lucide-vue-next'
+import BaseButton from '../ui/BaseButton.vue'
+import { photo } from '../../data/products'
+</script>
+<template><section class="hero container"><div class="hero-copy"><p class="eyebrow"><span class="tiny-line"></span> СОЗДАНО ВРУЧНУЮ. СОЗДАНО ДЛЯ ВАС.</p><h1>Сумки <br><em>ручной</em> работы<span class="accent-dot">.</span></h1><p class="hero-description">Натуральная кожа. Продуманные детали.<br>Больше, чем аксессуар — часть вашей истории.</p><BaseButton to="/catalog">Смотреть коллекцию</BaseButton><div class="hero-note"><span>01 /</span> Простые формы. Настоящие чувства.</div></div><div class="hero-photo"><img :src="photo('22-13-01 (2)')" width="853" height="1280" alt="Женщина в голубой рубашке с большой чёрной кожаной сумкой" fetchpriority="high"><div class="photo-label"><span>Красота в простоте</span><RouterLink to="/catalog/black-tote" aria-label="Посмотреть большую чёрную сумку">↗</RouterLink></div></div></section><div class="container benefits"><span><MapPin />Российское производство</span><span><Leaf />Натуральная кожа</span><span><Sparkles />Ручная работа</span><a href="#collections" class="discover" aria-label="Перейти к коллекциям"><ArrowDown /></a></div></template>

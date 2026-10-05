@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Replace https://example.com with the production domain before publication. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/</loc></url>
+  <url><loc>https://example.com/catalog</loc></url>
+  <url><loc>https://example.com/about</loc></url>
+  <url><loc>https://example.com/delivery</loc></url>
+  <url><loc>https://example.com/contacts</loc></url>
+  <url><loc>https://example.com/privacy</loc></url>
+  <url><loc>https://example.com/catalog/red-classic</loc></url>
+  <url><loc>https://example.com/catalog/blue-shoulder</loc></url>
+  <url><loc>https://example.com/catalog/black-tote</loc></url>
+  <url><loc>https://example.com/catalog/black-geometry</loc></url>
+  <url><loc>https://example.com/catalog/suede-hobo</loc></url>
+  <url><loc>https://example.com/catalog/small-essentials</loc></url>
+  <url><loc>https://example.com/catalog/red-glasses-case</loc></url>
+  <url><loc>https://example.com/catalog/brown-sling</loc></url>
+</urlset>

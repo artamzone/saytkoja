@@ -1,0 +1,5 @@
+<script setup>
+import ContactButton from '../ui/ContactButton.vue'
+defineProps({ product: Object })
+</script>
+<template><div class="product-info"><p class="eyebrow">СОЗДАНО ВРУЧНУЮ</p><h1>{{ product.title }}</h1><p class="product-price">{{ product.price }}</p><p class="body-copy">{{ product.description }}</p><dl><div><dt>Материал</dt><dd>{{ product.material }}</dd></div><div><dt>Размеры</dt><dd>{{ product.dimensions }}</dd></div><div><dt>Цвета</dt><dd>{{ product.colors.join(', ') }}</dd></div></dl><h2 class="small-heading">В деталях</h2><ul class="detail-list"><li v-for="detail in product.details" :key="detail">{{ detail }}</li></ul><ContactButton :title="product.title" /><p class="fine-print">{{ product.availability }}</p><RouterLink to="/delivery" class="text-link">О доставке ↗</RouterLink></div></template>

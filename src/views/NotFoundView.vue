@@ -1,0 +1,1 @@
+<template><section class="section container page-section empty-page"><p class="eyebrow">404</p><h1>Здесь пока нет истории</h1><p>Страница или изделие не найдены.</p><RouterLink to="/catalog" class="button">Вернуться в каталог ↗</RouterLink></section></template>

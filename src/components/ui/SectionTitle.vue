@@ -1,0 +1,2 @@
+<script setup>defineProps({ eyebrow: String, title: String })</script>
+<template><div class="section-heading"><p v-if="eyebrow" class="eyebrow">{{ eyebrow }}</p><h2>{{ title }}</h2><slot /></div></template>

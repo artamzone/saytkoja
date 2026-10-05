@@ -1,0 +1,4 @@
+<script setup>
+defineProps({ product: { type: Object, required: true } })
+</script>
+<template><article class="product-card"><RouterLink :to="'/catalog/' + product.slug" class="image-frame"><img :src="product.images[0]" :alt="product.title + ' — ' + product.shortDescription" loading="lazy" decoding="async"><span class="product-tag">{{ product.material }}</span></RouterLink><div class="product-title"><h3><RouterLink :to="'/catalog/' + product.slug">{{ product.title }}</RouterLink></h3><span class="color-dot" :class="{ red: product.tags.includes('bright') && product.slug !== 'blue-shoulder', blue: product.slug === 'blue-shoulder' }" aria-hidden="true"></span></div><p>{{ product.shortDescription }}</p><div class="product-bottom"><span>{{ product.price }}</span><RouterLink :to="'/catalog/' + product.slug" class="text-link">Подробнее ↗</RouterLink></div></article></template>
